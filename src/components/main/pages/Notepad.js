@@ -1,6 +1,6 @@
 import React, {useState, useContext, Fragment} from 'react'
-import {UserInfoContext} from '../../context/UserInfoContext'
-import {auth, firestore} from '../../config/firebase'
+import {UserInfoContext} from '../../../context/UserInfoContext'
+import {auth, firestore} from '../../../config/firebase'
 
 const Notepad = () => {
 

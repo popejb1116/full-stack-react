@@ -1,6 +1,6 @@
 import React, {useState, Fragment} from 'react'
 import {Redirect} from 'react-router-dom'
-import {auth, firestore} from '../../config/firebase'
+import {auth, firestore} from '../../../config/firebase'
 
 const SignUp = () => {
 

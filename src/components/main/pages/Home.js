@@ -1,6 +1,6 @@
 import React, {useState, useContext, Fragment} from 'react'
 import  {Redirect} from 'react-router-dom'
-import {UserInfoContext} from '../../context/UserInfoContext'
+import {UserInfoContext} from '../../../context/UserInfoContext'
 
 const Home = () => {
 

@@ -5,10 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import {UserInfoContextProvider} from './context/UserInfoContext'
+import {ThemeProvider} from 'styled-components'
+import {theme} from './aesthetics/theme'
 
 ReactDOM.render(
    <UserInfoContextProvider>
-      <App />
+      <ThemeProvider theme={theme}>
+         <App />
+      </ThemeProvider>
    </UserInfoContextProvider>
 , document.getElementById('root'));
 

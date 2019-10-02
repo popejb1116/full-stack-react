@@ -1,23 +1,34 @@
 import React from 'react'
-import {BrowserRouter, Route} from 'react-router-dom'
-import Navlinks from './components/nav/Navlinks'
-import Home from './components/pages/Home'
-import SignIn from './components/auth/SignIn'
-import SignOut from './components/auth/SignOut'
-import SignUp from './components/auth/SignUp'
-import Notepad from './components/pages/Notepad'
+import {BrowserRouter} from 'react-router-dom'
+import styled from 'styled-components'
+import Header from './components/header/Header'
+import Main from './components/main/Main'
+import Aside from './components/aside/Aside'
+import Footer from './components/footer/Footer'
 
 function App() {
    return (
       <BrowserRouter>
-         <Navlinks/>
-         <Route path='/' exact component={Home}/>
-         <Route path='/signin' component={SignIn}/>
-         <Route path='/signout' component={SignOut}/>
-         <Route path='/signup' component={SignUp}/>
-         <Route path='/notepad' component={Notepad}/>
+         <StyledApp>
+            <Header/>
+            <Main/>
+            <Aside/>
+            <Footer/>
+         </StyledApp>
       </BrowserRouter>
    )
 }
 
 export default App
+
+const StyledApp = styled.div`
+   display: grid;
+   grid-template-columns: repeat(10, 1fr);
+   grid-template-rows: 15vh auto 10vh;
+   grid-template-areas: 
+      " h h h h h h h h h h "
+      " . m m m m m m . a a "
+      " f f f f f f f f f f "
+   ;
+   height: 100vh;
+`

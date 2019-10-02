@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import {Redirect} from 'react-router-dom'
-import {auth} from '../../config/firebase'
+import {auth} from '../../../config/firebase'
 
 const SignOut = () => {
 
