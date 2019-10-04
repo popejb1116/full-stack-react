@@ -1,42 +1,34 @@
-import React, {useState, useEffect, Fragment} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 import {Redirect} from 'react-router-dom'
 import {auth} from '../../../config/firebase'
+import {StyledMainChild, StyledMessageCenter} from '../_MainStyledComponents'
 
 const SignOut = () => {
-
-   const [isSubmitting, setIsSubmitting] = useState(false)
-   const [errorMessage, setErrorMessage] = useState()
    const [shouldRedirect, setShouldRedirect] = useState(false)
+   const [message, setMessage] = useState("Signing out, peace!")
+
+   const MessageCenter = () => {
+      return <StyledMessageCenter>{message}</StyledMessageCenter>
+   }
+   const messageMemo = useMemo(() => <MessageCenter/>, [message])
 
    useEffect(() => {
-
-      setIsSubmitting(true)
       
       const attemptSignOut = async() => {
          try {
             await auth.signOut()
             setShouldRedirect(true)
          } catch (error) {
-            setErrorMessage(error.message)
+            setMessage(error.message)
          }
       }
-      attemptSignOut()
-      
+      attemptSignOut()      
    }, [])
 
-   const Submitting = () => {
-      return <p>Please wait while we sign you in...</p>
-   }
-
-   const ErrorMessage = () => {
-      return <p>{errorMessage}</p>
-   }
-
    return shouldRedirect ? (<Redirect to='/'/>) : (
-      <Fragment>
-         {isSubmitting && <Submitting/>}
-         {errorMessage && <ErrorMessage/>}
-      </Fragment>
+      <StyledMainChild>
+         {messageMemo}
+      </StyledMainChild>
    )
 }
 

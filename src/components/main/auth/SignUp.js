@@ -1,6 +1,8 @@
-import React, {useState, Fragment} from 'react'
+import React, {useState, useMemo} from 'react'
 import {Redirect} from 'react-router-dom'
 import {auth, firestore} from '../../../config/firebase'
+import {StyledMainChild, StyledMessageCenter} from '../_MainStyledComponents'
+import {StyledForm, StyledInputSection, StyledInput, StyledButton} from './_AuthStyledComponents'
 
 const SignUp = () => {
 
@@ -9,13 +11,18 @@ const SignUp = () => {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
    const [isSubmitting, setIsSubmitting] = useState(false)
-   const [errorMessage, setErrorMessage] = useState()
    const [shouldRedirect, setShouldRedirect] = useState(false)
+   const [message, setMessage] = useState("Signing up, really? Your funeral...")
+
+   const MessageCenter = () => {
+      return <StyledMessageCenter>{message}</StyledMessageCenter>
+   }
+   const messageMemo = useMemo(() => <MessageCenter/>, [message])
 
    const handleSignUp = async e => {
       e.preventDefault()
       setIsSubmitting(true)
-      setErrorMessage()
+      setMessage("Please wait while we sign you up...")
       try {
          const newUser = {
             firstName: firstName,
@@ -34,7 +41,7 @@ const SignUp = () => {
          setShouldRedirect(true)
       } catch (error) {
          setIsSubmitting(false)
-         setErrorMessage(error.message)
+         setMessage(error.message)
          setFirstName("")
          setLastName("")
          setEmail("")
@@ -42,27 +49,19 @@ const SignUp = () => {
       }
    }
 
-   const Submitting = () => {
-      return <p>Please wait while we sign you up...</p>
-   }
-
-   const ErrorMessage = () => {
-      return <p>{errorMessage}</p>
-   }
-
-
    return shouldRedirect ? (<Redirect to='/'/>) : (
-      <Fragment>
-         <form onSubmit={handleSignUp}>
-            <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)}/>
-            <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)}/>
-            <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
-            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
-            <button disabled={isSubmitting}>Sign Up</button>
-         </form>
-         {isSubmitting && <Submitting/>}
-         {errorMessage && <ErrorMessage/>}
-      </Fragment>
+      <StyledMainChild>
+         {messageMemo}
+         <StyledForm onSubmit={handleSignUp}>
+            <StyledInputSection>
+               <StyledInput type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)}/>
+               <StyledInput type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)}/>
+               <StyledInput type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
+               <StyledInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
+            </StyledInputSection>
+            <StyledButton disabled={isSubmitting}>Sign Up</StyledButton>
+         </StyledForm>
+      </StyledMainChild>
    )
 }
 
