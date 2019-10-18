@@ -160,15 +160,27 @@ const StyledAddNoteForm = styled.form`
    display: flex;
    justify-content: space-between;
    align-items: center;
-   height: 4rem;
+   min-height: 4rem;
    width: 75%;
    margin-bottom: 2rem;
+
+   @media (max-width: 1024px) {
+      margin-bottom: 1rem;
+   }
+
+   @media (max-width: 846px) {
+      min-height: 2.5rem;
+   }
+
+   @media (max-width: 414px) {
+      width: 80%;
+   }
 `
 
 const StyledAddNoteInput = styled.input`
    background: ${props => props.theme.secondary};
    color: ${props => props.theme.primary};
-   height: 100%;
+   min-height: 4rem;
    width: 70%;
    padding: 6px;
    border: solid 3px transparent;
@@ -178,12 +190,17 @@ const StyledAddNoteInput = styled.input`
       outline: none;
       border-color: ${props => props.theme.primary};
    }
+
+   @media (max-width: 846px) {
+      min-height: 2.5rem;
+      font-size: 1.25rem;
+   }
 `
 
 const StyledAddNoteButton = styled.button`
    background-color: ${props => props.theme.primary};
    color: ${props => props.theme.secondary};
-   height: 100%;
+   min-height: 4rem;
    width: 25%;
    border: solid 3px transparent;
    border-radius: 6px;
@@ -197,6 +214,11 @@ const StyledAddNoteButton = styled.button`
    &:focus {
       outline: none;
       border-color: ${props => props.theme.secondary};
+   }
+
+   @media (max-width: 846px) {
+      min-height: 2.5rem;
+      font-size: 1.25rem;
    }
 `
 
@@ -213,11 +235,25 @@ const StyledNote = styled.div`
    display: flex;
    justify-content: space-between;
    align-items: center;
-   height: 3.5rem;
+   min-height: 3.5rem;
+   height: auto;
    width: 75%;
    margin: 0.5rem 0;
    border: solid 3px ${props => props.theme.secondary};
    border-radius: 6px;
+
+   @media (max-width: 846px) {
+      min-height: 2.5rem;
+      margin: 0.25rem 0;
+   }
+
+   @media (max-width: 768px) {
+      margin: 0.5rem 0;
+   }
+
+   @media (max-width: 414px) {
+      width: 80%;
+   }
 `
 
 const StyledNoteText = styled.p`
@@ -230,17 +266,27 @@ const StyledNoteText = styled.p`
    padding-left: 6px;
    font-size: 1.5rem;
    font-weight: 600;
+
+   @media (max-width: 846px) {
+      font-size: 1rem;
+   }
 `
+
 const StyledButtonSection = styled.section`
    display: flex;
    justify-content: flex-end;
    align-items: center;
    height: 100%;
    width: 15%;
+
+   @media (max-width: 846px) {
+      width: 25%;
+   }
 `
 
 const StyledIconButton = styled.button`
    background: url(${props => props.icon}) no-repeat center center;
+   background-size: 80%;
    background-color: ${props => props.theme.primary};
    height: 2.5rem;
    width: 2.5rem;
@@ -255,17 +301,35 @@ const StyledIconButton = styled.button`
       outline: none;
       border-color: ${props => props.theme.secondary};
    }
+
+   @media (max-width: 846px) {
+      height: 1.5rem;
+      width: 1.5rem;
+   }
 `
 
 const StyledEditNoteForm = styled.form`
    display: flex;
    justify-content: space-between;
    align-items: center;
-   height: 3.5rem;
+   min-height: 3.5rem;
    width: 75%;
    margin: 0.5rem 0;
    border: solid 3px ${props => props.theme.secondary};
    border-radius: 6px;
+
+   @media (max-width: 846px) {
+      min-height: 2.5rem;
+      margin: 0.25rem 0;
+   }
+
+   @media (max-width: 768px) {
+      margin: 0.5rem 0;
+   }
+
+   @media (max-width: 414px) {
+      width: 80%;
+   }
 `
 
 const StyledEditNoteInput = styled.input`
@@ -280,4 +344,8 @@ const StyledEditNoteInput = styled.input`
    padding-left: 6px;
    font-size: 1.5rem;
    font-weight: 600;
+
+   @media (max-width: 846px) {
+      font-size: 1rem;
+   }
 `

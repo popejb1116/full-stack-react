@@ -14,7 +14,7 @@ export const StyledMessageCenter = styled.div`
    justify-content: center;
    align-items: center;
    text-align: center;
-   height: 20vh;
+   min-height: 20vh;
    width: 100%;
    color: ${props => props.theme.accent};
    font-size: 1.5rem;
@@ -33,4 +33,18 @@ export const StyledMessageCenter = styled.div`
          opacity: 1;
       }      
    }
+
+   @media (max-width: 1024px) {
+      min-height: 12vh;
+   }
+
+   @media (max-width: 740px) {
+      font-size: 1rem;
+   }
+
+   @media (max-width: 414px) {
+      min-height: 8vh;
+      padding-top: 0.5rem;
+      font-size: 1rem;
+   }   
 `

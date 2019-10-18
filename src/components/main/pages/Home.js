@@ -24,6 +24,8 @@ const Home = () => {
       return <StyledHicks>{hicksQutoes[hicksIndex]}</StyledHicks>
    }
 
+   const hicksMemo = useMemo(() => <Hicks/>, [hicksIndex])
+
    useEffect(() => {
       setHicksIndex(Math.floor(Math.random() * Math.floor(6)))
    }, [])
@@ -58,7 +60,7 @@ const Home = () => {
       <StyledMainChild>
          {messageMemo}
          {signedIn ? (<AuthUser/>) : (null)}
-         <Hicks/>
+         {hicksMemo}
       </StyledMainChild>
    )
 }
@@ -83,6 +85,25 @@ const StyledButton = styled.button`
       outline: none;
       border-color: ${props => props.theme.secondary};
    }
+
+   @media (max-width: 846px) {
+      height: 15vh;
+      margin-top: 1rem;
+   }
+
+   @media (max-width: 768px) {
+      height: 10vh;
+   }
+
+   @media (max-width: 740px) {
+      height: 15vh;
+      font-size: 1.5rem;
+   }
+
+   @media (max-width: 414px) {
+      height: 10vh;
+      width: 70%;
+   }
 `
 const StyledHicks = styled.p`
    color: ${props => props.theme.accent};
@@ -99,4 +120,12 @@ const StyledHicks = styled.p`
          opacity: 1;
       }
    }
+
+   @media (max-width: 740px) {
+      font-size: 1.5rem;
+   }
+
+   @media (max-width: 414px) {
+      padding: 0.5rem;
+   }   
 `

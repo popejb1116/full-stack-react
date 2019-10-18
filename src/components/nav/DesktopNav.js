@@ -60,4 +60,8 @@ const StyledDesktopNav = styled.nav`
       width: 100%;
       opacity: 1;
    }
+
+   @media (max-width: 1024px) {
+      display: none;
+   }
 `

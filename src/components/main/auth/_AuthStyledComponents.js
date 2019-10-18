@@ -7,6 +7,14 @@ export const StyledForm = styled.form`
    align-items: center;
    height: 75%;
    width: 100%;
+
+   @media (max-width: 846px) {
+      margin-top: 1rem;
+   }
+
+   @media (max-width: 414px) {
+      margin: 0;
+   }
 `
 
 export const StyledInputSection = styled.section`
@@ -31,6 +39,14 @@ export const StyledInput = styled.input`
    &:focus {
       outline: none;
       border-color: ${props => props.theme.primary};
+   }
+
+   @media (max-width: 846px) {
+      margin-bottom: 0.5rem;
+   }
+
+   @media (max-width: 414px) {
+      width: 70%;
    }
 `
 
@@ -58,5 +74,13 @@ export const StyledButton = styled.button`
       background: grey;
       color: lightgray;
       cursor: not-allowed;
+   }
+
+   @media (max-width: 846px) {
+      margin-top: 1rem;
+   }
+
+   @media (max-width: 414px) {
+      width: 50%;
    }
 `

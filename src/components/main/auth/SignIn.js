@@ -21,15 +21,25 @@ const SignIn = () => {
       e.preventDefault()
       setIsSubmitting(true)
       setMessage("Please wait while we sign you in...")
-      try {
-         await auth.signInWithEmailAndPassword(email, password)
+      // try {
+      //    await auth.signInWithEmailAndPassword(email, password)
+      //    setShouldRedirect(true)
+      // } catch (error) {
+      //    setIsSubmitting(false)
+      //    setMessage(error.message)
+      //    setEmail("")
+      //    setPassword("")
+      // }
+      auth.signInWithEmailAndPassword(email, password)
+      .then(() => {
          setShouldRedirect(true)
-      } catch (error) {
+      })
+      .catch(error => {
          setIsSubmitting(false)
          setMessage(error.message)
          setEmail("")
          setPassword("")
-      }
+      })
    }
 
    return shouldRedirect ? (<Redirect to='/'/>) : (

@@ -31,4 +31,23 @@ const StyledApp = styled.div`
       " f f f f f f f f f f "
    ;
    height: 100vh;
+
+   @media (max-width: 1024px) {
+      grid-template-rows: 15vh 15vh auto 10vh;
+      grid-template-areas: 
+         " h h h h h h h h h h "
+         " . a a a a a a a a . "
+         " . m m m m m m m m . "
+         " f f f f f f f f f f "
+      ;
+   }
+
+   @media (max-width: 414px) {
+      grid-template-areas: 
+         " h h h h h h h h h h "
+         " a a a a a a a a a a "
+         " m m m m m m m m m m "
+         " f f f f f f f f f f "
+      ;
+   }
 `

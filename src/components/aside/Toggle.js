@@ -7,21 +7,21 @@ const Toggle = () => {
 
    return (
       <StyledToggle>
-         <StyledTitle>Title</StyledTitle>
+         <StyledTitle>Order By</StyledTitle>
          <StyledSliderSection>
             <StyledOptionButton
                isDefault={true}
                defaultSelected={defaultSelected}
                onClick={() => setDefaultSelected(true)}
                onMouseDown={e => e.preventDefault()}
-            >default</StyledOptionButton>
+            >Oldest</StyledOptionButton>
             <StyledSlider defaultSelected={defaultSelected}/>
             <StyledOptionButton
                isDefault={false}
                defaultSelected={defaultSelected}
                onClick={() => setDefaultSelected(false)}
                onMouseDown={e => e.preventDefault()}
-            >alt</StyledOptionButton>
+            >Newest</StyledOptionButton>
          </StyledSliderSection>
       </StyledToggle>
    )
@@ -36,12 +36,51 @@ const StyledToggle = styled.div`
    align-items: center;
    height: 50%;
    width: 100%;
+
+   @media (max-width: 1024px) {
+      height: 100%;
+      width: 50%;
+   }
+
+   @media (max-width: 846px) {
+      flex-direction: row;
+      justify-content: space-around;
+      height: 100%;
+   }
+
+   @media (max-width: 414px) {
+      flex-direction: column;
+   }
 `
 
 const StyledTitle = styled.p`
    color: ${props => props.theme.primary};
    font-size: 2rem;
    font-weight: bolder;
+
+   @media (max-width: 846px) {
+      font-size: 1.25rem;
+   }
+
+   @media (max-width: 768px) {
+      font-size: 1.5rem;
+   }
+
+   @media (max-width: 740px) {
+      font-size: 1rem;
+   }
+
+   @media (max-width: 731px) {
+      font-size: 1.25rem;
+   }
+
+   @media (max-width: 568px) {
+      font-size: 1rem;
+   }
+
+   @media (max-width: 414px) {
+      font-size: 1.25rem;
+   }
 `
 
 const StyledSliderSection = styled.section`
@@ -51,6 +90,24 @@ const StyledSliderSection = styled.section`
    align-items: center;
    height: 20vh;
    width: 100%;
+
+   @media (max-width: 1024px) {
+      flex-direction: row;
+      justify-content: space-around;
+      height: 60%;
+      width: 100%;
+   }
+
+   @media (max-width: 846px) {
+      justify-content: space-around;
+      height: 100%;
+      width: 60%;
+   }
+
+   @media (max-width: 414px) {
+      height: 60%;
+      width: 100%;
+   }
 `
 
 const StyledOptionButton = styled.button`
@@ -81,6 +138,41 @@ const StyledOptionButton = styled.button`
    &:focus {
       outline: none;
       text-decoration: underline;
+   }
+
+   @media (max-width: 1024px) {
+      transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+      width: 30%;
+   }
+
+   @media (max-width: 846px) {
+      height: 60%;
+      width: 40%;
+      font-size: 0.75rem;
+   }
+
+   @media (max-width: 768px) {
+      height: 50%;
+      width: 45%;
+      font-size: 1rem;
+   }
+
+   @media (max-width: 740px) {
+      height: 65%;
+      width: 40%;
+      font-size: 0.75rem;
+   }
+
+   @media (max-width: 568px) {
+      font-size: 0.5rem;
+   }
+
+   @media (max-width: 414px) {
+      font-size: 0.75rem;
+   }
+
+   @media (max-width: 320px) {
+      height: 75%;
    }
 `
 
@@ -135,5 +227,9 @@ const StyledSlider = styled.div`
          width: 4vh;
          transform: translateY(4vh)
       }
+   }
+
+   @media (max-width: 1024px) {
+      display: none;
    }
 `
